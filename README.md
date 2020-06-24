@@ -21,6 +21,5 @@ This repository contains the templates and settings for my django website: www.a
 
 **Other features:**
  - AWS S3 buckets used for image management for uploading project images
- - Admin page handled by django
  - Contact page sends email directly to personal email
  - Google analytics to be added in the future.
