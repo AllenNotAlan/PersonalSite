@@ -14,10 +14,10 @@ This repository contains the templates and settings for my django website: www.a
 ![otherproject](https://github.com/AllenNotAlan/PersonalSite/blob/master/sample_img/otherprojects.PNG)
 - Lity used to implement lightbox for other-projects links. https://sorgalla.com/lity/
 
-**Re-captcha feature for contact page:**
+**reCaptcha feature for contact page:**
 
 ![recaptcha](https://github.com/AllenNotAlan/PersonalSite/blob/master/sample_img/contact.PNG)
-- Re-captcha v2 Invisible used [other builds implement changing to v3 or v2 visible]
+- reCaptcha v2 Invisible used
 
 **Other features:**
  - AWS S3 buckets used for image management for uploading project images
