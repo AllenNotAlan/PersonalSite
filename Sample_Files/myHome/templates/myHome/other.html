@@ -1,0 +1,86 @@
+{% extends 'myHome/base.html' %}
+{% block content %}
+{% load static %}
+
+<section>
+    <div class="page-container otherPage">
+      <div class="container newPages">
+        <div class="row otherRow">
+          <!-- <h1>Other things I've done outside of software development.</h1> -->
+          <div class="col-1">
+
+          </div>
+          <div class="col-10" style="text-align: center;">
+            <h1>Outside of Technology</h1>
+            <h2>Iceland</h2>
+            <p>Trip to Iceland in 2016. Filmed on a Nexus 6P. Edited with Premiere Pro.</p>
+            <div class="overlay">
+              <a class="playgif" href="https://www.vimeo.com/video/225373396"
+              data-lity>
+                <img class='otherProjectImageIceland' 
+                data-swap="{% static 'otherprojects_images/compressedIcelandStatic.gif' %}"
+                src="{% static 'otherprojects_images/staticiceland.png' %}">
+                <span class="iconify testPlayIceland" data-icon="bi:film" data-inline="false"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-1">
+
+          </div>
+        </div>
+        <div class="row otherRow">
+          <div class="col-1">
+          </div>
+          <div class="col-10" style="text-align: center;">
+            <h2>My Top 20 Films of 2017</h2>
+            <p>In 2017, I watched over 100+ films for work. This is a
+              compilation video of my favourite films of 2017. Not in any particular order(kind of...).</p>
+            <div class="overlay">
+              <a class="playgif"
+              href="https://drive.google.com/file/d/1y4x2t7jGbuppkNFlpVF4haueJN50-xdn/preview"
+              data-lity>
+                <img class='otherProjectImage'
+                data-swap="{% static 'otherprojects_images/compressedBladeRunner.gif' %}" 
+                src="{% static 'otherprojects_images/topfilmscrop.PNG' %}">
+                <span class="iconify testPlay" data-icon="bi:film" data-inline="false"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-1">
+
+          </div>
+        </div>
+
+        <div class="row otherRow">
+          <div class="col-1">
+
+          </div>
+          <div class="col-10" style="text-align: center;">
+            <h2>Cinemas, community and culture in Northern Ireland</h2>
+            <p>A blog post I wrote for the Independent Cinema Office outlining my experiences in my role and the importance of film in the
+              community, culture and history of Northern Ireland.
+            </p>
+            <div class="overlay">
+              <a class="playgif"
+              href="https://www.independentcinemaoffice.org.uk/cinemas-community-and-culture-in-northern-ireland-allens-role-at-filmfeds/"
+              data-lity>
+                <img class='otherProjectArticle'
+                data-swap="{% static 'otherprojects_images/icoarticle.PNG' %}"
+                src="{% static 'otherprojects_images/icoarticle.PNG' %}">
+                <span class="iconify testPlay" data-icon="bi:file-earmark-text" data-inline="false"></span>
+              </a>
+            </div>
+          </div>
+          <div class="col-1">
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

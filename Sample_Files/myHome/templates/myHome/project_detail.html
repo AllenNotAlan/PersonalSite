@@ -1,0 +1,27 @@
+{% extends 'myHome/base.html' %}
+
+{% block content %}
+
+<div class="page-container container newPages">
+  <article class="media content-section">
+    <img class="rounded article-img" src="{{ object.thumbnail.url }}">
+      <div class="media-body">
+        <h2 class="article-title">{{ object.title }}</h2>
+        <p class="article-content">{{ object.description }}</p>
+        <div class="article-metadata">
+          <small class="text-muted"><a href="#">{{ object.link }}</a></small>
+          <small class="text-muted">{{ object.author }}</small>
+          <!-- <small class="text-muted">{{ project.date_posted }}</small> -->
+          {% if object.author == user %}
+              <div>
+                  <a class="btn btn-secondary btn mt-1 mb-1" href="{% url 'project-update' object.id %}">Update</a>
+                  <a class="btn btn-danger btn mt-1 mb-1" href="{% url 'project-delete' object.id %}">Delete</a>
+              </div>
+          {% endif %}
+        </div>
+      </div>
+  </article>
+
+</div>
+        
+{% endblock content%}

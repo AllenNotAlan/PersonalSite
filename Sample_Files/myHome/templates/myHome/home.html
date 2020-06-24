@@ -1,0 +1,186 @@
+{% extends 'myHome/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- TOP SECTION-READ MORE -->
+<section>
+    <div id="title">
+        <div class="container center">
+          <div class="divPic w3-animate-top1">
+            <img class="rounded-circle myPic shadow-lg" src="{% static 'Allen_1_cropped.jpg' %}">
+          </div>
+          <div class="shortDes">
+              <header>
+                  <h2 class="w3-animate-top1 myName">Allen Loyola</h2>
+              </header>
+          </div>
+          <div class="container shortDes">
+              <p class="w3-animate-top1">
+                  I'm Allen, an aspiring Software Developer from Belfast, Northern Ireland.
+              </p>
+          </div>
+          <div class="w3-animate-bottom1 readMore">
+            <p><a class="aboutMeArrow scroll_to" href="#about-me"> Read More </a></p>
+            <a class="aboutMeArrow scroll_to" href="#about-me"><i class="material-icons">keyboard_arrow_down</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- ABOUT ME -->
+<section id="about-me">
+  <div class="darkBack">
+      
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>About Me</h2>
+        </div>
+          <p>
+            In 2016, I gained a Bachelor’s degree in Physics. Shortly after graduating, I started working in marketing in the film industry. 
+            I’ve always had a love of technology so during this time I also started learning a programming language. 
+            After a while I decided I wanted to go back to university and study software development 
+            to further develop my skills. 
+            Fast forward to 2020 and I now hold a Master’s degree in Software Development!
+            <br><br>
+            I’m a very curious person with many interests. 
+            Whether it be programming, building PCs or video editing, I love making/building things whenever I can.
+            <br><br>
+            You can check out some of my software projects 
+            <a class="scroll_to" href='#my-Projects'><span class="linkSpan">here</span></a> 
+            and my projects outside of software 
+            <a href="{% url 'myHome-other' %}"><span class="linkSpan">here</span></a>.
+          </p>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="techStackRow">
+                <h4>Here are a few technologies I've been working with recently:</h4>
+                <ul class="techStack">
+                  <li>Python</li>
+                  <li>Django</li>
+                  <li>C#</li>
+                  <li>Raspberry Pi</li>
+                  <li>HTML & (S)CSS</li>
+                </ul>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- MY STUDIES SECTION  -->
+  <div class="darkBack myStudiesSection">
+      <div class="container">
+        <div class="sectionTitle">
+          <h2>My Studies</h2>
+        </div>
+        <div class="container" id="tabTable">
+          <div class="btn-group tab">
+            <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"><h4>Software Development</h4></button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')"><h4>Physics</h4></button>
+          </div>
+          
+          <div id="London" class="tabcontent w3-animate-opacity1">
+            <h3>MSc in Software Development</h3>
+            <h6><span class="uniSpan">Queen's University Belfast</span></h6>
+            <p>2018-2019</p>
+            <p class="tabParagraph">
+              This course was an intensive education in software development where
+              I learnt the foundations of computing and industry relevant skills. 
+              These core skills include programming (Java), databases,
+              web development, software engineering and software testing.
+            </p>
+          </div>
+          
+          <div id="Paris" class="tabcontent w3-animate-opacity1">
+            <h3>BSc in Physics</h3>
+            <h6><span class="uniSpan">Queen's University Belfast</span></h6>
+            <p>2012-2016</p>
+            <p class="tabParagraph">
+              In this course I was exposed to all areas of physics as well as many branches of mathematics.
+              I studied modules such as Quantum Mechanics, Nuclear & Particle Physics and Quantum Relativity.
+              My final year projects were in the areas of X-Ray Diffraction and Catastrophe Theory.
+            </p>
+          </div>
+        </div>
+      </div>
+  </div>
+
+<!-- project section -->
+<section id="my-Projects">
+  <div class="whiteBack">
+    <div class="container">
+        <div class="sectionTitle myProjectsTitle">
+          <h2>Some of my projects</h2>
+          <small class="text-muted">Hover over the cards (or tap) to read more.</small>
+        </div>
+
+      <div class="row mx-auto" style="display: block;">
+        <div class="card-deck"> 
+        {% for project in projects %}
+        <div class="col-lg-3 col-md-5 col-sm-5 mx-auto d-flex">
+          <div class="card shadow mx-auto">
+            <div class="wrapper">
+              <img class="card-img-top img-fluid" src="{{ project.thumbnail.url }}" alt="Card image cap">
+            </div>
+            <div class="card-body" style="margin-bottom: 10px;">
+              <h5>
+                  {{ project.title }}
+              </h5>
+              <p class="card-text">
+                {{ project.summary }}
+              </p>
+              <p class="hiddenText">
+                {{ project.description }}
+              </p>
+            </div>
+            <small class="language">{{ project.language }}</small>
+            {% if user.is_authenticated %}
+            <div>
+              <a class="updateProject" href="{% url 'project-detail' project.id %}">Update</a>
+            </div>
+            {% else %}
+            <div>
+              <a href="{{ project.link }}" target="_blank">
+                <span class="iconify" data-icon="simple-icons:github" data-inline="false"></span>
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section>
+      <div class="darkBack">
+          <div class="container">
+            <div class="sectionTitle">
+              <h2>What I want to learn in the future...</h2>
+            </div>
+
+              <p>
+                <ul class="techStack">
+                  <li>Machine Learning/AI</li>
+                  <li>Raspberry Pi "stuff"</li>
+                  <li>Security</li>
+                  <li>APIs</li>
+                  <li>Java (Spring)</li>
+                  <li>Game development with C++ or C#</li>
+                  <li>More Python!</li>
+                </ul>
+
+              </p>
+    
+          </div>
+      </div>
+    </section>
+
+
+
+{% endblock content%}

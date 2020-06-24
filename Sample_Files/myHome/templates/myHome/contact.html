@@ -1,0 +1,66 @@
+{% extends 'myHome/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section>
+
+        
+      <div class="container newPages">
+        <div class="row">
+
+            <div class="col-1">
+
+            </div>
+            <div class="col-10 content-section">
+                <h2>Send me an email:</h2>
+                <form method="POST" action="{% url 'myHome-contact' %}">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-1">
+                
+            </div>
+
+        </div>
+        <div class="row" id="contactPageIcons">
+            <div class="col-1">
+            </div>
+            <div class="col-10" style="text-align: center;">
+                <p><b>allen@allenloyola.com</b> or <b>aloyola01@qub.ac.uk</b></p>
+                <div>
+                    Other Links
+                  </div>
+                  <a class="footerIcons" href="https://www.linkedin.com/in/allen-loyola-908a4a138">
+                    <svg xmlns="https://www.w3.org/2000/svg" 
+                    xmlns:xlink="https://www.w3.org/1999/xlink" 
+                    aria-hidden="true" focusable="false" 
+                    width="2rem" 
+                    height="2rem" 
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 432 432"><path d="M363 365V244q0-31-22-53t-53-22q-15 0-30 8.5T235 199v-26h-64v192h64V252q0-13 9-22.5t22.5-9.5t23 9.5T299 252v113h64zM96 137q16 0 27.5-11T135 99t-11.5-27.5T96 60T68.5 71.5T57 99t11.5 27T96 137zm32 228V173H64v192h64zM384 3q18 0 30.5 12.5T427 45v342q0 17-12.5 29.5T384 429H43q-18 0-30.5-12.5T0 387V45q0-17 12.5-29.5T43 3h341z" 
+                    fill="#4C647C"/>
+                    </svg>
+                  </a>
+                  <a class="footerIcons" href="https://github.com/AllenNotAlan">
+                    <svg xmlns="https://www.w3.org/2000/svg" 
+                    xmlns:xlink="https://www.w3.org/1999/xlink" 
+                    aria-hidden="true" focusable="false" 
+                    width="2rem" 
+                    height="2rem" 
+                    style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 432 432"><path d="M43 3h341q18 0 30.5 12.5T427 45v342q0 17-12.5 29.5T384 429H274q-7-1-7-21v-58q0-27-15-40q44-5 70.5-27t26.5-78q0-33-22-57q11-26-2-57q-18-6-58 22q-26-7-54-7t-53 7q-18-12-32.5-17.5T107 91h-6q-12 31-2 57q-22 24-22 57q0 55 27 77.5t70 27.5q-11 10-13 29q-42 18-62-18q-12-20-33-22q-2 0-4.5.5T56 303t8 9q15 7 24 31q1 2 2 4.5t6.5 9.5t13 10.5T130 374t30-2v36q0 20-8 21H43q-18 0-30.5-12.5T0 387V45q0-17 12.5-29.5T43 3z"
+                    fill="#4C647C"/></svg>
+                  </a>
+            </div>
+            <div class="col-1">
+            </div>
+
+        </div>
+      </div>
+
+</section>
+
+{% endblock %}

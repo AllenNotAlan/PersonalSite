@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'myHome/main.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Magra' rel='stylesheet'>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/lity@2.4.1/dist/lity.css" rel="stylesheet">
+    
+    {% if title %}
+    <title>Allen Loyola - {{ title }}</title>
+    {% else %}
+    <title>Allen Loyola</title>
+    {% endif %}
+</head>
+<body class="googleFont">
+
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="nav-item nav-link" id="navbarname" href="{% url 'myHome-home' %} ">Allen Loyola</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'myHome-other' %}">Other Projects</a>
+              </div>
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'project-create' %}">New Project</a>
+                  <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                  <!-- <a class="nav-item nav-link" href="{% url 'login' %}">Login</a> -->
+                  <a class="nav-item nav-link" href="{% url 'myHome-contact' %}">Contact</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+  <main role="main">
+    <div class="page-container">
+
+      <!--USE THIS FOR SUCCESS PROMPT FOR ADDING PROJECTS!-->
+      {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+      {% endif %}
+      <!--Other content to go under this.-->
+
+      {% block content %}
+      {% endblock content%}
+
+    </div>
+
+  </main>
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          <div>
+            Get In Touch
+          </div>
+            <a class="footerIcons" href="https://www.linkedin.com/in/allen-loyola-908a4a138">
+              <svg xmlns="https://www.w3.org/2000/svg" 
+              xmlns:xlink="https://www.w3.org/1999/xlink" 
+              aria-hidden="true" focusable="false" 
+              width="1.5rem" 
+              height="1.5rem" 
+              style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 432 432"><path d="M363 365V244q0-31-22-53t-53-22q-15 0-30 8.5T235 199v-26h-64v192h64V252q0-13 9-22.5t22.5-9.5t23 9.5T299 252v113h64zM96 137q16 0 27.5-11T135 99t-11.5-27.5T96 60T68.5 71.5T57 99t11.5 27T96 137zm32 228V173H64v192h64zM384 3q18 0 30.5 12.5T427 45v342q0 17-12.5 29.5T384 429H43q-18 0-30.5-12.5T0 387V45q0-17 12.5-29.5T43 3h341z" 
+              fill="white"/>
+              </svg>
+            </a>
+            <a class="footerIcons" href="https://github.com/AllenNotAlan">
+              <svg xmlns="https://www.w3.org/2000/svg" 
+              xmlns:xlink="https://www.w3.org/1999/xlink" 
+              aria-hidden="true" focusable="false" 
+              width="1.5rem" 
+              height="1.5rem" 
+              style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 432 432"><path d="M43 3h341q18 0 30.5 12.5T427 45v342q0 17-12.5 29.5T384 429H274q-7-1-7-21v-58q0-27-15-40q44-5 70.5-27t26.5-78q0-33-22-57q11-26-2-57q-18-6-58 22q-26-7-54-7t-53 7q-18-12-32.5-17.5T107 91h-6q-12 31-2 57q-22 24-22 57q0 55 27 77.5t70 27.5q-11 10-13 29q-42 18-62-18q-12-20-33-22q-2 0-4.5.5T56 303t8 9q15 7 24 31q1 2 2 4.5t6.5 9.5t13 10.5T130 374t30-2v36q0 20-8 21H43q-18 0-30.5-12.5T0 387V45q0-17 12.5-29.5T43 3z"
+              fill="white"/></svg>
+            </a>
+            <a class="footerIcons" href="{% url 'myHome-contact' %}">
+              <svg xmlns="https://www.w3.org/2000/svg" 
+              xmlns:xlink="https://www.w3.org/1999/xlink" 
+              aria-hidden="true" focusable="false" 
+              width="1.5rem" 
+              height="1.5rem" 
+              style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463l-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068A1.485 1.485 0 0 1 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432c.27.268.431.643.431 1.068z" 
+                fill="white"/></svg>
+            </a>
+        </div>
+        <div class="col-sm">
+        </div>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="https://unpkg.com/lity@2.4.1/dist/lity.js"></script>
+  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+  <script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
+
+  <script>
+    jQuery('.scroll_to').click(function(e){
+        var jump = $(this).attr('href');
+        var new_position = $(jump).offset();
+        $('html, body').stop().animate({ scrollTop: new_position.top }, 500);
+        e.preventDefault();
+    });
+  </script>
+
+  <script>
+    $(function () {
+      $(".playgif").hover(function () {
+        var stat = $(this).find("img").attr("src");
+        $(this).find("img").attr("src", $(this).find("img").data("swap"));
+        $(this).find("img").data("swap", stat);
+      })
+    });
+  </script>
+  
+</body>
+</html>
